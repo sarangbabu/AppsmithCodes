@@ -1,0 +1,18 @@
+export default {
+	filterUsers: (data=ClassList.data) => {
+		let users = data; 
+		users = users.filter(u=>u.Active==="Yes");
+		if (Select3.selectedOptionValue=='Price'){
+			users = users.sort((a,b)=>a.StartingFrom-b.StartingFrom);
+		} else if (Select3.selectedOptionValue=='Index'){
+			users = users.sort((a,b)=>a.Index-b.Index);
+		}
+		if (Select2.selectedOptionValue!=='All'){
+			users = users.filter(u => u.For ===Select2.selectedOptionValue);
+		}
+			//users = users.filter(u => u.For ===Select2.selectedOptionValue);
+			
+	
+		return users;
+}
+}
