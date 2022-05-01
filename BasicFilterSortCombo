@@ -1,3 +1,4 @@
+//Following Code has price low to high, index and class type filter
 export default {
 	filterUsers: (data=ClassList.data) => {
 		let users = data; 
@@ -13,6 +14,27 @@ export default {
 			//users = users.filter(u => u.For ===Select2.selectedOptionValue);
 			
 	
+		return users;
+}
+}
+
+
+//Following Code Has Price Low to High, High to Low, Index and Type Filter
+export default {
+	filterUsers: (data=ClassList.data) => {
+		let users = data; 
+		users = users.filter(u=>u.Active==="Yes");
+		if (Select3.selectedOptionValue=='PriceL2H'){
+			users = users.sort((a,b)=>a.StartingFrom-b.StartingFrom);
+		} else if (Select3.selectedOptionValue=='PriceH2L'){
+			users = users.sort((a,b)=>b.StartingFrom-a.StartingFrom);
+		}else if (Select3.selectedOptionValue=='Index'){
+			users = users.sort((a,b)=>a.Index-b.Index);
+		}		
+		if (Select2.selectedOptionValue!=='All'){
+			users = users.filter(u => u.For ===Select2.selectedOptionValue);
+		}
+		
 		return users;
 }
 }
